@@ -213,14 +213,15 @@ def process_worker(result_info):
 
             chain_hash = hashlib.sha256("".join([x['as_der'] for x in cert_data['chain']]).encode('ascii')).hexdigest()
 
-            # header = "timestamp, url, cert_index, chain_hash, cert_der, all_domains, CN, not_before, not_after"
+            # NOT USED, this was the header earlier header = "url, cert_index, chain_hash, cert_der, all_domains, not_before, not_after"
+            # header = "timestamp, url, cert_index, all_domains, CN, not_before, not_after"
             lines.append(
                 ",".join([
                     str(cert_data['timestamp']),
                     result_info['log_info']['url'],
                     str(entry['cert_index']),
-                    chain_hash,
-                    cert_data['leaf_cert']['as_der'],
+                    # chain_hash,
+                    # cert_data['leaf_cert']['as_der'],
                     ' '.join(cert_data['leaf_cert']['all_domains']),
                     cert_data['leaf_cert']['subject']['CN'],
                     str(cert_data['leaf_cert']['not_before']),
