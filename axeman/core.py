@@ -216,7 +216,7 @@ def process_worker(result_info):
             # header = "timestamp, url, cert_index, chain_hash, cert_der, all_domains, CN, not_before, not_after"
             lines.append(
                 ",".join([
-                    cert_data['timestamp'],
+                    str(cert_data['timestamp']),
                     result_info['log_info']['url'],
                     str(entry['cert_index']),
                     chain_hash,
